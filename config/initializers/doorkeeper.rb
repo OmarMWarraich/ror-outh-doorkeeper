@@ -19,15 +19,16 @@ Doorkeeper.configure do
   # adding oauth authorized applications. In other case it will return 403 Forbidden response
   # every time somebody will try to access the admin web interface.
   #
-  admin_authenticator do
+  admin_authenticator do |_routes|
     # Put your admin authentication logic here.
     # Example implementation:
 
-    if current_user
-      # head :forbidden unless current_user.admin?
-    else
-      redirect_to sign_in_url
-    end
+    # if current_user
+    #   # head :forbidden unless current_user.admin?
+    # else
+    #   redirect_to sign_in_url
+    # end
+    current_user || warden.authenticate!(scope: :user)
   end
 
   # You can use your own model classes if you need to extend (or even override) default

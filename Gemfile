@@ -83,3 +83,4 @@ gem "whenever", require: false
 gem "responders", github: "heartcombo/responders", branch: "main"
 
 gem "doorkeeper", "~> 5.7"
+gem "rack-cors"
